@@ -11,9 +11,17 @@ services:
       - "8080:8080"
     environment:
       TZ: "Europe/Moscow"
-      CONFIG_PATH: "/app/config.yaml"
+      SERVER_PORT: ${SERVER_PORT}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      JWT_SECRET: ${JWT_SECRET}
+      LOGGER_FILE: ${LOGGER_FILE}
+#      CONFIG_PATH: "/app/config.yaml"
     volumes:
-      - ./config.yaml:/app/config.yaml
+      - ./.env:/app/.env
     command: ["./main"]
 
 
@@ -29,10 +37,10 @@ services:
       - "-path"
       - "/migrations"
       - "-database"
-      - "postgres://postgres:admin@db:5432/merch_shop?sslmode=disable"
+      - "postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=disable"
       - "up"
     environment:
-      WAIT_HOSTS: db:5432
+      WAIT_HOSTS: ${DB_HOST}:${DB_PORT}
       WAIT_TIMEOUT: 30
     restart: "no"
 

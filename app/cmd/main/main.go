@@ -4,7 +4,6 @@ import (
 	"MerchShop/app"
 	"MerchShop/internal/config"
 	"MerchShop/internal/logger"
-	"MerchShop/internal/route"
 	"context"
 	"errors"
 	"fmt"
@@ -31,7 +30,7 @@ func main() {
 	defer appObj.Close()
 
 	router := gin.Default()
-	route.InitializeRoutes(router, appObj)
+	app.InitializeRoutes(router, appObj)
 
 	server := &http.Server{
 		Addr:    fmt.Sprintf(":%v", cfg.Server.Port),

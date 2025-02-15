@@ -34,18 +34,15 @@ func (ih *InventoryHandler) BuyItem(c *gin.Context) {
 	}
 
 	item := c.Param("item")
-	if item == "" {
-		RespondWithError(c, 400, "item param is empty")
-		return
-	}
-
 	req := request.BuyItemRequest{Name: item}
 
 	err := ih.userService.BuyItem(c.Request.Context(), uID, req)
 	if err != nil {
-		if errors.Is(err, pgdb.ErrItemNotFound) || errors.Is(err, pgdb.ErrInsufficientFunds) {
-			RespondWithError(c, 400, err.Error())
+		if errors.Is(err, pgdb.ErrItemNotFound) {
+			RespondWithError(c, 404, err.Error())
 			return
+		} else if errors.Is(err, pgdb.ErrInsufficientFunds) {
+			RespondWithError(c, 400, err.Error())
 		}
 		RespondWithError(c, 500, err.Error())
 		return

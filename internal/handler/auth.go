@@ -3,6 +3,7 @@ package handler
 import (
 	"MerchShop/internal/dto/request"
 	"MerchShop/internal/service"
+	"errors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -23,8 +24,13 @@ func (ah *AuthHandler) Auth(c *gin.Context) {
 
 	token, err := ah.userService.LoginUser(c.Request.Context(), req.Username, req.Password)
 	if err != nil {
-		RespondWithError(c, 400, err.Error())
-		return
+		if errors.Is(err, service.ErrInvalidPassword) {
+			RespondWithError(c, 401, err.Error())
+			return
+		} else {
+			RespondWithError(c, 400, err.Error())
+			return
+		}
 	}
 
 	c.JSON(200, gin.H{

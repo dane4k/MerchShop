@@ -1,8 +1,10 @@
 package handler
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
+	"strings"
 )
 
 type BaseHandler struct {
@@ -22,24 +24,24 @@ func (bh *BaseHandler) BindRequest(c *gin.Context, req interface{}) bool {
 	}
 
 	if err := bh.validator.Struct(req); err != nil {
-		errors := make(map[string]string)
-		for _, err := range err.(validator.ValidationErrors) {
-			field, tag := err.Field(), err.Tag()
-			errors[field] = tag
+		validationErrors := err.(validator.ValidationErrors)
+		errorMessages := make([]string, 0, len(validationErrors))
+
+		for _, e := range validationErrors {
+			errorMessages = append(errorMessages, fmt.Sprintf("%s: %s", e.Field(), e.Tag()))
 		}
-		RespondWithError(c, 400, "validation failed", gin.H{"details": errors})
+
+		errorMsg := "validation error: " + strings.Join(errorMessages, "; ")
+		RespondWithError(c, 400, errorMsg)
+
 		return false
 	}
 
 	return true
 }
 
-func RespondWithError(c *gin.Context, statusCode int, message string, details ...gin.H) {
-	response := gin.H{"error": message}
-	if len(details) > 0 {
-		for key, value := range details[0] {
-			response[key] = value
-		}
-	}
-	c.JSON(statusCode, response)
+func RespondWithError(c *gin.Context, statusCode int, message string) {
+	c.JSON(statusCode, gin.H{
+		"errors": message,
+	})
 }

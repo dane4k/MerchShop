@@ -8,6 +8,7 @@ import (
 	"MerchShop/internal/repo/pgdb"
 	"MerchShop/internal/service"
 	"database/sql"
+	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 )
 
@@ -63,6 +64,18 @@ func InitApp(cfg *config.Config) *App {
 		TransactionHandler: transactionHandler,
 		AuthMiddleware:     authMiddleware,
 	}
+}
+
+func InitializeRoutes(router *gin.Engine, appObj *App) {
+	api := router.Group("/api")
+	api.Use(appObj.AuthMiddleware.Handle())
+	{
+		api.GET("/info", appObj.InfoHandler.GetInfo)
+		api.POST("/sendCoin", appObj.TransactionHandler.SendCoins)
+		api.GET("/buy/:item", appObj.InventoryHandler.BuyItem)
+	}
+
+	router.POST("/api/auth", appObj.AuthHandler.Auth)
 }
 
 func (appObj *App) Close() {
