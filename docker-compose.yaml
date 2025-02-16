@@ -21,7 +21,7 @@ services:
       LOGGER_FILE: ${LOGGER_FILE}
     volumes:
       - ./.env:/app/.env
-    command: ["./merchshop"]
+    command: [ "./merchshop" ]
 
 
   migrate:
@@ -39,6 +39,7 @@ services:
       - "postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=disable"
       - "up"
     environment:
+      TZ: "Europe/Moscow"
       WAIT_HOSTS: ${DB_HOST}:${DB_PORT}
       WAIT_TIMEOUT: 30
     restart: "no"
@@ -50,6 +51,7 @@ services:
     ports:
       - "5432:5432"
     environment:
+      TZ: "Europe/Moscow"
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
