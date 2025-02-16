@@ -3,15 +3,14 @@ package main
 import (
 	"database/sql"
 
+	"github.com/dane4k/MerchShop/internal/application/service"
+	"github.com/dane4k/MerchShop/internal/infrastructure/config"
+	"github.com/dane4k/MerchShop/internal/infrastructure/db"
+	"github.com/dane4k/MerchShop/internal/infrastructure/db/pgdb"
+	"github.com/dane4k/MerchShop/internal/presentations/handler"
+	"github.com/dane4k/MerchShop/internal/presentations/middleware"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
-
-	"github.com/dane4k/MerchShop/application/service"
-	"github.com/dane4k/MerchShop/infrastructure/config"
-	"github.com/dane4k/MerchShop/infrastructure/db"
-	"github.com/dane4k/MerchShop/infrastructure/db/pgdb"
-	"github.com/dane4k/MerchShop/presentations/handler"
-	"github.com/dane4k/MerchShop/presentations/middleware"
 )
 
 type App struct {

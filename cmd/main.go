@@ -10,11 +10,10 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/dane4k/MerchShop/internal/infrastructure/config"
+	"github.com/dane4k/MerchShop/internal/infrastructure/logger"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
-
-	"github.com/dane4k/MerchShop/infrastructure/config"
-	"github.com/dane4k/MerchShop/infrastructure/logger"
 )
 
 func main() {
