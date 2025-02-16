@@ -8,8 +8,8 @@ import (
 	"github.com/dane4k/MerchShop/internal/application/service_test/mocks"
 	"github.com/dane4k/MerchShop/internal/domain"
 	"github.com/dane4k/MerchShop/internal/errs"
-	"github.com/dane4k/MerchShop/internal/presentations/dto/request"
-	"github.com/dane4k/MerchShop/internal/presentations/dto/response"
+	"github.com/dane4k/MerchShop/internal/presentation/dto/request"
+	"github.com/dane4k/MerchShop/internal/presentation/dto/response"
 	"github.com/stretchr/testify/assert"
 )
 

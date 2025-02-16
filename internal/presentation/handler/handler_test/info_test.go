@@ -7,8 +7,8 @@ import (
 
 	"github.com/dane4k/MerchShop/internal/application/service"
 	"github.com/dane4k/MerchShop/internal/application/service_test/mocks"
-	"github.com/dane4k/MerchShop/internal/presentations/dto/response"
-	"github.com/dane4k/MerchShop/internal/presentations/handler"
+	"github.com/dane4k/MerchShop/internal/presentation/dto/response"
+	"github.com/dane4k/MerchShop/internal/presentation/handler"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"

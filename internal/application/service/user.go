@@ -7,8 +7,8 @@ import (
 	"github.com/dane4k/MerchShop/internal/domain"
 	"github.com/dane4k/MerchShop/internal/errs"
 	"github.com/dane4k/MerchShop/internal/infrastructure/db/pgdb"
-	"github.com/dane4k/MerchShop/internal/presentations/dto/request"
-	"github.com/dane4k/MerchShop/internal/presentations/dto/response"
+	"github.com/dane4k/MerchShop/internal/presentation/dto/request"
+	"github.com/dane4k/MerchShop/internal/presentation/dto/response"
 )
 
 type UserService interface {

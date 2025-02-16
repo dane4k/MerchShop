@@ -5,7 +5,7 @@ import (
 
 	"github.com/dane4k/MerchShop/internal/application/service"
 	"github.com/dane4k/MerchShop/internal/errs"
-	"github.com/dane4k/MerchShop/internal/presentations/dto/request"
+	"github.com/dane4k/MerchShop/internal/presentation/dto/request"
 	"github.com/gin-gonic/gin"
 )
 

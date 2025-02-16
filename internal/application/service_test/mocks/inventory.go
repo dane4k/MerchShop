@@ -3,7 +3,7 @@ package mocks
 import (
 	"context"
 
-	"github.com/dane4k/MerchShop/internal/presentations/dto/response"
+	"github.com/dane4k/MerchShop/internal/presentation/dto/response"
 	"github.com/stretchr/testify/mock"
 )
 

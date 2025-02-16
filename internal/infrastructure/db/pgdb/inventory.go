@@ -6,7 +6,7 @@ import (
 	"errors"
 
 	sq "github.com/Masterminds/squirrel"
-	"github.com/dane4k/MerchShop/internal/presentations/dto/response"
+	"github.com/dane4k/MerchShop/internal/presentation/dto/response"
 )
 
 type InventoryRepo struct {

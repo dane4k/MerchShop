@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/dane4k/MerchShop/internal/application/service"
-	"github.com/dane4k/MerchShop/internal/presentations/handler"
+	"github.com/dane4k/MerchShop/internal/presentation/handler"
 	"github.com/gin-gonic/gin"
 )
 

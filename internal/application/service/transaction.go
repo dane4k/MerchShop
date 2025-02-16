@@ -5,7 +5,7 @@ import (
 	"errors"
 
 	"github.com/dane4k/MerchShop/internal/errs"
-	"github.com/dane4k/MerchShop/internal/presentations/dto/response"
+	"github.com/dane4k/MerchShop/internal/presentation/dto/response"
 )
 
 type TransactionService interface {
