@@ -1,18 +1,16 @@
-config.yaml:
+Запуск:
+### 1) .env:
 ```
-database:
-  host: "db"
-  port: 5432
-  user: "postgres"
-  password: "admin"
-  name: "merch_shop"
-```
-.env:
-```
+SERVER_PORT=8080
+DB_HOST=db
+DB_PORT=5432
 DB_USER=postgres
 DB_PASSWORD=admin
 DB_NAME=merch_shop
+JWT_SECRET=secret
+LOGGER_FILE=MerchShop.log
 ```
+### 2)
 ```
 docker compose up --build
 ```
