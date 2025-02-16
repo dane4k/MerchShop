@@ -19,10 +19,9 @@ services:
       DB_NAME: ${DB_NAME}
       JWT_SECRET: ${JWT_SECRET}
       LOGGER_FILE: ${LOGGER_FILE}
-#      CONFIG_PATH: "/app/config.yaml"
     volumes:
       - ./.env:/app/.env
-    command: ["./main"]
+    command: ["./merchshop"]
 
 
   migrate:

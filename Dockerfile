@@ -3,10 +3,10 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN go build -o /app/main ./app/cmd/main
+RUN go build -o /app/merchshop ./cmd/main.go ./cmd/app.go
 
 FROM alpine:latest
 WORKDIR /app
-COPY --from=builder /app/main .
-CMD ["/app/main"]
+COPY --from=builder /app/merchshop .
+CMD ["/app/merchshop"]
 LABEL authors="danya"
